@@ -15,10 +15,6 @@ def print_lcd(display, temp, humidity):
     display.clear()
 
     display.move_to(1, 0)
-    current_time = time.gmtime()
-    display.putstr(f"{current_time[3]}:{current_time[4]}:{current_time[5]}")
-
-    display.move_to(1, 1)
     display.putstr(f"T:{round(temp, 1)}C  ")
     display.putstr(f"H:{int(humidity)}%")
 
