@@ -4,19 +4,21 @@ from lib import aht20
 from lib import pico_i2c_lcd
 
 
-def scan_i2c_devices(i2c):
-    devices = i2c.scan()
-
-    for device in devices:
-        print(f"{device} | address {hex(device)}")
+# def scan_i2c_devices(i2c):
+#     devices = i2c.scan()
+#
+#     for device in devices:
+#         print(f"{device} | address {hex(device)}")
 
 
 def print_lcd(display, temp, humidity):
     display.clear()
 
-    display.move_to(1, 0)
-    display.putstr(f"T:{round(temp, 1)}C  ")
-    display.putstr(f"H:{int(humidity)}%")
+    display.move_to(0, 0)
+    display.putstr(f"Temp:{round(temp, 2)} C")
+
+    display.move_to(0, 1)
+    display.putstr(f"Humidity:{round(humidity, 2)} %")
 
 
 def main():
@@ -25,15 +27,13 @@ def main():
 
     i2c = machine.I2C(0, scl=machine.Pin(9), sda=machine.Pin(8), freq=100000)
 
-    scan_i2c_devices(i2c)
-
     sensor = aht20.AHT20(i2c)
     display = pico_i2c_lcd.I2cLcd(i2c, 2, 16)
 
     while True:
         print_lcd(display, sensor.temperature(), sensor.relative_humidity())
 
-        time.sleep(1)
+        time.sleep(3)
 
 
 if __name__ == '__main__':
