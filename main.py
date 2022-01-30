@@ -4,13 +4,6 @@ from lib import aht20
 from lib import pico_i2c_lcd
 
 
-# def scan_i2c_devices(i2c):
-#     devices = i2c.scan()
-#
-#     for device in devices:
-#         print(f"{device} | address {hex(device)}")
-
-
 def print_lcd(display, temp, humidity):
     display.clear()
 
