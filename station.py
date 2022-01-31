@@ -28,7 +28,7 @@ class Station:
         display.clear()
 
         display.move_to(0, 0)
-        display.putstr(f"Temp: {round(temp, 2)}C")
+        display.putstr(f"Temp:     {round(temp, 2)}C")
 
         display.move_to(0, 1)
         display.putstr(f"Humidity: {round(humidity, 2)}%")
