@@ -1,0 +1,8 @@
+class Consts:
+    AHT20_I2C_ADDRESS = 0x38
+    LCD_DISPLAY_I2C_ADDRESS = 0x27
+    SCL_PIN = 9
+    SDA_PIN = 8
+
+    DISPLAY_ROWS = 2
+    DISPLAY_CELLS = 16

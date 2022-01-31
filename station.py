@@ -2,12 +2,13 @@ import time
 import machine
 from lib import aht20
 from lib import pico_i2c_lcd
+from consts import Consts
 
 
 class Station:
     def __init__(self):
         self.onboard_led = machine.Pin(25, machine.Pin.OUT)
-        self.i2c = machine.I2C(0, scl=machine.Pin(9), sda=machine.Pin(8), freq=100000)
+        self.i2c = machine.I2C(0, scl=machine.Pin(Consts.SCL_PIN), sda=machine.Pin(Consts.SDA_PIN), freq=100000)
 
         self.temp_sensor = None
         self.display = None
@@ -16,8 +17,9 @@ class Station:
 
     def init_sensor(self):
         try:
-            self.temp_sensor = aht20.AHT20(self.i2c)
-            self.display = pico_i2c_lcd.I2cLcd(self.i2c, 2, 16)
+            self.temp_sensor = aht20.AHT20(self.i2c, address=Consts.AHT20_I2C_ADDRESS)
+            self.display = pico_i2c_lcd.I2cLcd(self.i2c, Consts.DISPLAY_ROWS, Consts.DISPLAY_CELLS,
+                                               i2c_addr=Consts.LCD_DISPLAY_I2C_ADDRESS)
 
             self.initialized = True
 
