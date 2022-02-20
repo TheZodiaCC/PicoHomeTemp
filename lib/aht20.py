@@ -52,7 +52,7 @@ class AHT20:
 
         return self.buf[0]
 
-    def relative_humidity(self):
+    def get_relative_humidity(self):
         self.read_data()
 
         self.humidity = ((self.buf[1] << 12) | (self.buf[2] << 4) | (self.buf[3] >> 4))
@@ -60,7 +60,7 @@ class AHT20:
 
         return self.humidity
 
-    def temperature(self):
+    def get_temperature(self):
         self.read_data()
 
         self.temp = ((self.buf[3] & 0xF) << 16) | (self.buf[4] << 8) | self.buf[5]

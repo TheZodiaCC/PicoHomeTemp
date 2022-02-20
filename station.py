@@ -38,7 +38,7 @@ class Station:
     def process(self):
         while True:
             if self.initialized:
-                self.print_lcd(self.display, self.temp_sensor.temperature(), self.temp_sensor.relative_humidity())
+                self.print_lcd(self.display, self.temp_sensor.get_temperature(), self.temp_sensor.get_relative_humidity())
 
             else:
                 self.onboard_led.toggle()
