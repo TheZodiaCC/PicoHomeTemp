@@ -6,6 +6,7 @@ USB-C powered Humidity & Temperature sensor with LCD display
 
 ### Parts
 - 1x Raspberry Pi Pico
+- 1x DHT20 temperature and humidity sensor
 - 1x Circuit board
 - 2x 470 uF capacitors
 - 1x USB-C connector
